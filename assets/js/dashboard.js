@@ -5,9 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initDashboardSidebar();
-  initTheme(); // Needs theme toggle logic since dashboard doesn't have main nav, we'll ensure main.js is loaded or provide it here. 
-  // It's better to load main.js on dashboard pages too to avoid duplicating RTL/Theme logic, 
-  // but let's be careful. The prompt says "main.js -> all site-wide JS". We will include main.js on dashboard pages for the toggles.
+  // initTheme() is already handled in main.js to avoid double-toggling
 });
 
 function initDashboardSidebar() {

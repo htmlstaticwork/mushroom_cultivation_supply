@@ -607,6 +607,55 @@ html.dark .card-price {
   color: var(--color-secondary);
 }
 
+/* Dashboard Components */
+.welcome-banner {
+  background: linear-gradient(135deg, var(--color-primary), #634a36);
+  padding: var(--space-10);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-8);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+html.dark .welcome-banner {
+  background: linear-gradient(135deg, var(--color-surface-dark), var(--color-primary));
+  border: 1px solid var(--theme-border);
+}
+
+.welcome-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(139, 105, 20, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome-banner h2 {
+  color: white;
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-3xl);
+}
+
+.welcome-banner p {
+  color: rgba(232, 222, 202, 0.8);
+  font-size: var(--font-size-lg);
+  margin-bottom: 0;
+}
+
 /* Dashboard Global */
 .dashboard-layout {
   display: flex;
