@@ -345,6 +345,16 @@ html.dark .navbar.scrolled {
   transform-origin: left;
 }
 
+.nav-link.active {
+  color: var(--color-primary) !important;
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
+  background: var(--color-primary);
+}
+
 .nav-tools {
   display: flex;
   align-items: center;
