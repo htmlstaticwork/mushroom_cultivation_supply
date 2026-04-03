@@ -48,6 +48,14 @@
       font-size: var(--font-size-sm);
       font-weight: 500;
       color: var(--theme-text-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .filter-pill:hover:not(.active) {
+      background: var(--theme-surface);
+      border-color: var(--theme-text-muted);
+      color: var(--theme-text);
     }
 
     .filter-pill.active {
@@ -72,6 +80,14 @@
       border: 1px solid var(--theme-border);
       border-radius: var(--radius-md);
       color: var(--theme-text-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .page-btn:hover:not(.active) {
+      background: var(--theme-surface);
+      border-color: var(--theme-text);
+      color: var(--theme-text);
     }
 
     .page-btn.active {
