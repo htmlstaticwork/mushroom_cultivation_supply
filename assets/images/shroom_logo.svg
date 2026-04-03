@@ -1,0 +1,62 @@
+<svg width="100%" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Spore dot pattern for subtle gill texture on cap underside -->
+    <clipPath id="cap-clip">
+      <path d="M60,112 Q60,128 80,132 L148,132 Q168,128 168,112 Z"/>
+    </clipPath>
+  <mask id="imagine-text-gaps-34xspg" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="200" fill="white"/><rect x="187.99998474121094" y="50.4391975402832" width="281.4946594238281" height="97.50648498535156" fill="black" rx="2"/></mask></defs>
+
+  <!-- ═══════════════════════════════ -->
+  <!--  MUSHROOM ICON                 -->
+  <!-- ═══════════════════════════════ -->
+
+  <!-- Shadow / ground base ellipse -->
+  <ellipse cx="114" cy="158" rx="28" ry="5" fill="#8B6914" opacity="0.18" style="fill:rgb(139, 105, 20);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.18;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Stem -->
+  <path d="M97,130 Q94,158 90,162 Q114,167 138,162 Q134,158 131,130 Z" fill="#8B6914" opacity="0.72" style="fill:rgb(139, 105, 20);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.72;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Gill lines on cap underside (delicate botanical detail) -->
+  <g clip-path="url(#cap-clip)" opacity="0.22" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.22;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <line x1="80" y1="112" x2="80" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="89" y1="112" x2="88" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="98" y1="112" x2="97" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="107" y1="112" x2="107" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="116" y1="112" x2="116" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="125" y1="112" x2="125" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="134" y1="112" x2="134" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="143" y1="112" x2="143" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="152" y1="112" x2="152" y2="132" stroke="#8B6914" stroke-width="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- Cap underside rim (subtle concave) -->
+  <path d="M60,112 Q60,130 80,134 L148,134 Q168,130 168,112" fill="none" stroke="#8B6914" stroke-width="0.6" opacity="0.35" style="fill:none;stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.6px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.35;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Cap body — full rounded dome -->
+  <path d="M60,112 Q56,72 114,52 Q172,72 168,112 Z" fill="#8B6914" style="fill:rgb(139, 105, 20);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Cap highlight band — thin lighter arc for botanical depth -->
+  <path d="M74,96 Q114,66 154,96" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.12" stroke-linecap="round" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1.2px;stroke-linecap:round;stroke-linejoin:miter;opacity:0.12;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Annulus ring on stem -->
+  <path d="M92,120 Q114,125 136,120 Q135,128 114,129 Q93,128 92,120 Z" fill="#8B6914" opacity="0.55" style="fill:rgb(139, 105, 20);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.55;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Fine etching dots on cap (botanical texture) -->
+  <circle cx="100" cy="78" r="1.2" fill="#fff" opacity="0.15" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.15;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="114" cy="66" r="1.4" fill="#fff" opacity="0.15" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.15;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="128" cy="78" r="1.2" fill="#fff" opacity="0.15" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.15;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="107" cy="88" r="0.9" fill="#fff" opacity="0.1" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="121" cy="88" r="0.9" fill="#fff" opacity="0.1" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+
+  <!-- ═══════════════════════════════ -->
+  <!--  WORDMARK                      -->
+  <!-- ═══════════════════════════════ -->
+
+  <text x="192" y="128" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="400" font-size="82" fill="#8B6914" letter-spacing="-1" style="fill:rgb(139, 105, 20);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Georgia, &quot;Times New Roman&quot;, serif;font-size:82px;font-weight:400;font-style:italic;text-anchor:start;dominant-baseline:auto">shroom</text>
+
+  <!-- Thin rule beneath wordmark — botanical underline -->
+  <line x1="192" y1="140" x2="654" y2="140" stroke="#8B6914" stroke-width="0.8" opacity="0.4" mask="url(#imagine-text-gaps-34xspg)" style="fill:rgb(0, 0, 0);stroke:rgb(139, 105, 20);color:rgb(255, 255, 255);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+</svg>

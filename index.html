@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shroom | Premium Mushroom Cultivation Supplies</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Hero specific */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2670&auto=format&fit=crop') center/cover no-repeat;
+      padding: var(--space-20) var(--space-6);
+      margin-top: var(--header-height);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(15, 11, 8, 0.4), rgba(15, 11, 8, 0.8));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      color: #E8DECA;
+      margin-bottom: var(--space-6);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      color: rgba(232, 222, 202, 0.9);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Verticals split */
+    .verticals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+
+    @media (max-width: 768px) {
+      .verticals-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .vertical-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-8);
+      text-decoration: none;
+      color: white !important;
+    }
+
+    .vertical-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 60%);
+      z-index: 1;
+      transition: opacity var(--transition-base);
+    }
+
+    .vertical-card:hover::before {
+      opacity: 0.8;
+    }
+
+    .vertical-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform var(--transition-slow);
+    }
+
+    .vertical-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .vertical-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .vertical-content h3 {
+      color: white;
+      margin-bottom: var(--space-2);
+    }
+
+    /* Why Shroom features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-8);
+    }
+
+    .feature-item {
+      background: var(--theme-surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--theme-border);
+      text-align: left;
+    }
+
+    .feature-img-wrapper {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+
+    .feature-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .feature-item:hover .feature-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .feature-icon {
+      position: absolute;
+      bottom: var(--space-3);
+      left: var(--space-3);
+      width: 44px;
+      height: 44px;
+      background: var(--color-secondary);
+      color: white;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-body {
+      padding: var(--space-6);
+    }
+
+    /* Testimonials */
+    .testimonial-slide {
+      background: var(--theme-bg);
+      border: 1px solid var(--theme-border);
+      padding: var(--space-8);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-6);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .features-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: var(--color-primary);
+      color: var(--color-text-dark);
+      text-align: center;
+      padding: var(--space-20) var(--space-6);
+      border-radius: var(--radius-xl);
+      margin: var(--space-12) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner h2 {
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-4);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner p {
+      color: rgba(232, 222, 202, 0.8);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-8);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1594917637841-f76db0cced01?q=80&w=1000&auto=format&fit=crop') center/cover;
+      opacity: 0.1;
+      mix-blend-mode: overlay;
+      z-index: 1;
+    }
+
+    .stats-section {
+      padding: var(--space-20) var(--space-6);
+      background: var(--theme-surface);
+      text-align: center;
+    }
+
+    .stats-section .section-subtitle {
+      margin-bottom: var(--space-16);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      border: 1px solid var(--theme-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-item {
+      padding: var(--space-12) var(--space-8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      border-right: 1px solid var(--theme-border);
+      transition: background var(--transition-base);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-item:hover {
+      background: var(--theme-bg);
+    }
+
+    @media (max-width: 768px) {
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat-item:nth-child(1),
+      .stat-item:nth-child(2) {
+        border-bottom: 1px solid var(--theme-border);
+      }
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    html.dark .stat-number {
+      color: var(--color-secondary);
+    }
+
+    .stat-label {
+      font-size: var(--font-size-sm);
+      color: var(--theme-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .stat-desc {
+      font-size: var(--font-size-sm);
+      color: var(--theme-text-muted);
+      max-width: 140px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="home2.html" class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link">Shop</a></li>
+
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-tools nav-tools-desktop">
+        <div class="nav-divider"></div>
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="login.html" class="nav-link" style="font-weight: 600;">Login</a>
+        <a href="dashboard.html" class="nav-link" style="color: var(--color-secondary); font-weight: 600;">Dashboard</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-menu">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hamburger Drawer -->
+  <div class="nav-drawer-overlay"></div>
+  <div class="nav-drawer">
+    <div class="nav-drawer-header">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <button class="nav-drawer-close" aria-label="Close Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-drawer-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="services.html" class="nav-link">Shop</a></li>
+
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link" style="color: var(--color-secondary);">Dashboard</a></li>
+      <li style="margin-top: var(--space-4);"><a href="login.html" class="btn btn-primary btn-block">Login</a></li>
+    </ul>
+    <div class="nav-drawer-tools">
+      <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-right">
+          <path d="M8 3 4 7l4 4" />
+          <path d="M4 7h16" />
+          <path d="m16 21 4-4-4-4" />
+          <path d="M20 17H4" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">RTL</span>
+      </button>
+      <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-moon">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="fade-in" style="animation-delay: 0.1s;">Master the Art of Mushroom Cultivation</h1>
+        <p class="fade-in" style="animation-delay: 0.2s;">Professional-grade spawn, expert video courses, and everything
+          you need to grow thriving organic fungi from home.</p>
+        <div class="hero-ctas fade-in" style="animation-delay: 0.3s;">
+          <a href="services.html" class="btn btn-accent">Shop Supplies</a>
+          <a href="services.html" class="btn btn-secondary" style="border-color: #E8DECA; color: #E8DECA;">Explore
+            Courses</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Product Verticals -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Cultivate Your Journey</h2>
+        <p class="section-subtitle fade-in">Choose your path. Whether you need the physical tools to start growing
+          today, or the knowledge to perfect your technique.</p>
+        <div class="divider fade-in"></div>
+
+        <div class="verticals-grid">
+          <a href="services.html" class="vertical-card fade-in">
+            <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=1000&auto=format&fit=crop"
+              alt="Cultivation Supplies">
+            <div class="vertical-content">
+              <h3>Cultivation Supplies</h3>
+              <p style="color: rgba(255,255,255,0.8); margin-bottom: var(--space-4);">Premium grain spawn, sterile
+                substrates, and fruiting environment gear.</p>
+              <span class="btn btn-primary">Shop Now</span>
+            </div>
+          </a>
+          <a href="services.html" class="vertical-card fade-in" style="animation-delay: 0.1s;">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1000&auto=format&fit=crop"
+              alt="Video Courses">
+            <div class="vertical-content">
+              <h3>Video Courses</h3>
+              <p style="color: rgba(255,255,255,0.8); margin-bottom: var(--space-4);">From agar work to advanced
+                fruiting chamber design. Learn from experts.</p>
+              <span class="btn btn-primary">Start Learning</span>
+            </div>
+          </a>
+        </div>
+        </a>
+      </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Featured Products -->
+    <section class="section" style="background: var(--theme-surface);">
+      <div class="container">
+        <h2 class="section-title fade-in">Featured Essentials</h2>
+        <div class="divider fade-in"></div>
+
+        <div class="card-grid cols-4" style="margin-top: var(--space-10);">
+          <!-- Product Card 1 -->
+          <div class="card fade-in">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1627962637207-6bb40283c79c?w=600&auto=format&fit=crop"
+                class="card-img" alt="Lion's Mane Liquid Culture">
+            </div>
+            <span class="card-tag">Living Culture</span>
+            <h4 class="card-title">Lion's Mane Culture</h4>
+            <p class="card-desc">Vigorous Hericium erinaceus isolate.</p>
+            <span class="card-price">$24.00</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+          <!-- Product Card 2 -->
+          <div class="card fade-in" style="animation-delay: 0.1s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1616853245464-9be1bd27ab89?w=600&auto=format&fit=crop"
+                class="card-img" alt="Sterile Rye Berry Spawn">
+            </div>
+            <span class="card-tag">Spawn</span>
+            <h4 class="card-title">Sterile Rye Berry Bag</h4>
+            <p class="card-desc">3lb bag with injection port.</p>
+            <span class="card-price">$18.50</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+          <!-- Product Card 3 -->
+          <div class="card fade-in" style="animation-delay: 0.2s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1583091916301-ad26b27d42cf?w=600&auto=format&fit=crop"
+                class="card-img" alt="Hardwood Fruiting Block">
+            </div>
+            <span class="card-tag">Substrate</span>
+            <h4 class="card-title">Master's Mix Block</h4>
+            <p class="card-desc">Supplemented hardwood sawdust 5lb.</p>
+            <span class="card-price">$22.00</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+          <!-- Product Card 4 -->
+          <div class="card fade-in" style="animation-delay: 0.3s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1605335602353-d144e5ea7519?w=600&auto=format&fit=crop"
+                class="card-img" alt="Still Air Box">
+            </div>
+            <span class="card-tag">Equipment</span>
+            <h4 class="card-title">Beginner Still Air Box</h4>
+            <p class="card-desc">Maintain sterility at home easily.</p>
+            <span class="card-price">$45.00</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <h2 class="section-title fade-in">Grown by the Numbers</h2>
+      <div class="divider fade-in"></div>
+      <p class="section-subtitle fade-in">Real results from real cultivators who trust Shroom for their grow.</p>
+
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <span class="stat-number">12k+</span>
+          <span class="stat-label">Cultivators Trained</span>
+          <p class="stat-desc">Home growers and commercial farms alike.</p>
+        </div>
+        <div class="stat-item fade-in" style="animation-delay: 0.1s;">
+          <span class="stat-number">80+</span>
+          <span class="stat-label">Strains in Catalogue</span>
+          <p class="stat-desc">From beginner oysters to exotic exotics.</p>
+        </div>
+        <div class="stat-item fade-in" style="animation-delay: 0.2s;">
+          <span class="stat-number">50k+</span>
+          <span class="stat-label">Orders Shipped</span>
+          <p class="stat-desc">Live cultures packed fresh, every single day.</p>
+        </div>
+        <div class="stat-item fade-in" style="animation-delay: 0.3s;">
+          <span class="stat-number">94%</span>
+          <span class="stat-label">Completion Rate</span>
+          <p class="stat-desc">Our courses are built to be finished.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Section 4: Why Shroom -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">The Shroom Standard</h2>
+        <div class="divider fade-in"></div>
+
+        <div class="features-grid" style="margin-top: var(--space-10);">
+
+          <!-- Vigorous Genetics -->
+          <div class="feature-item fade-in">
+            <div class="feature-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=800&auto=format&fit=crop"
+                alt="Vigorous Genetics">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-sprout">
+                  <path d="M7 20h10" />
+                  <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+                  <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" />
+                  <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" />
+                </svg>
+              </div>
+            </div>
+            <div class="feature-body">
+              <h4>Vigorous Genetics</h4>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">Commercial-grade isolates
+                tested for strong rhizomorphic growth and high yields.</p>
+            </div>
+          </div>
+
+          <!-- Expert Instructors -->
+          <div class="feature-item fade-in" style="animation-delay: 0.1s;">
+            <div class="feature-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&auto=format&fit=crop"
+                alt="Expert Instructors">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-microscope">
+                  <path d="M6 18h8" />
+                  <path d="M3 22h18" />
+                  <path d="M14 22a7 7 0 1 0 0-14h-1" />
+                  <path d="M9 14h2" />
+                  <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z" />
+                  <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3" />
+                </svg>
+              </div>
+            </div>
+            <div class="feature-body">
+              <h4>Expert Instructors</h4>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">Learn from mycologists who
+                operate real commercial farms and labs.</p>
+            </div>
+          </div>
+
+          <!-- Fast, Fresh Shipping -->
+          <div class="feature-item fade-in" style="animation-delay: 0.2s;">
+            <div class="feature-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop"
+                alt="Fast Fresh Shipping">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-truck">
+                  <path d="M10 17h4V5H2v12h3" />
+                  <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5" />
+                  <path d="M14 17h1" />
+                  <circle cx="7.5" cy="17.5" r="2.5" />
+                  <circle cx="17.5" cy="17.5" r="2.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="feature-body">
+              <h4>Fast, Fresh Shipping</h4>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">Live mycelium is perishable. We
+                pack fresh and ship fast to ensure viability.</p>
+            </div>
+          </div>
+
+          <!-- Grower Community -->
+          <div class="feature-item fade-in" style="animation-delay: 0.3s;">
+            <div class="feature-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&auto=format&fit=crop"
+                alt="Grower Community">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-users">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+            </div>
+            <div class="feature-body">
+              <h4>Grower Community</h4>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">Join a private forum of
+                thousands of cultivators when you enroll in any course.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Testimonials -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Success Stories</h2>
+        <div class="divider fade-in"></div>
+
+        <div class="card-grid" style="margin-top: var(--space-8);">
+          <div class="testimonial-slide fade-in">
+            <p class="testimonial-quote">"The agar culture course completely changed my game. I went from constant
+              contamination to a pristine library of genetics."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop"
+                class="testimonial-avatar" alt="Sarah J.">
+              <div>
+                <h5 style="margin-bottom: 0;">Sarah J.</h5>
+                <span style="font-size: var(--font-size-xs); color: var(--color-secondary);">Grows Blue Oysters</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide fade-in" style="animation-delay: 0.1s;">
+            <p class="testimonial-quote">"Their sterilized rye bags are flawless. Perfectly hydrated and the gas
+              exchange patches never pull away. Highly recommended."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop"
+                class="testimonial-avatar" alt="Mark T.">
+              <div>
+                <h5 style="margin-bottom: 0;">Mark T.</h5>
+                <span style="font-size: var(--font-size-xs); color: var(--color-secondary);">Grows Lion's Mane</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: CTA Banner -->
+    <section class="container" style="padding-bottom: var(--space-20);">
+      <div class="cta-banner fade-in">
+        <div class="cta-banner-content">
+          <h2>Ready to Start Your First Flush?</h2>
+          <p>Get everything you need delivered to your door.</p>
+          <div style="display: flex; gap: var(--space-4); justify-content: center;">
+            <a href="services.html" class="btn" style="background: white; color: var(--color-primary);">Browse the
+              Shop</a>
+            <a href="register.html" class="btn btn-secondary" style="border-color: white; color: white;">Create an
+              Account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+          </a>
+          <p class="footer-tagline">Grow More. Learn More. Your trusted source for authentic mycology supplies and
+            education.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-instagram">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-youtube">
+                <path
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                <path d="m10 15 5-3-5-3z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Shop</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">Grain Spawn</a></li>
+            <li><a href="services.html">Substrates</a></li>
+            <li><a href="services.html">Lab Tools</a></li>
+            <li><a href="services.html">Grow Kits</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Learn</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">All Courses</a></li>
+            <li><a href="blog.html">Free Guides</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Shroom LLC. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js">
+
+  </script>
+
+</body>
+
+</html>

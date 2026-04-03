@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grower Dashboard | Shroom</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    @media (max-width: 1024px) {
+      .kpi-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kpi-card {
+      background: var(--theme-surface);
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--theme-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .kpi-title {
+      font-size: var(--font-size-sm);
+      color: var(--theme-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .kpi-value {
+      font-size: var(--font-size-3xl);
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    html.dark .kpi-value {
+      color: var(--color-secondary);
+    }
+
+    .learning-strip {
+      background: var(--theme-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--theme-border);
+      padding: var(--space-6);
+      display: flex;
+      gap: var(--space-6);
+      align-items: center;
+      margin-bottom: var(--space-8);
+    }
+
+    @media (max-width: 768px) {
+      .learning-strip {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .learning-strip .btn {
+        width: 100%;
+      }
+    }
+
+    .learning-thumb {
+      width: 120px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+    }
+
+    .learning-content {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    .dash-section-title {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-6);
+    }
+  </style>
+</head>
+
+<body class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="dashboard-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="nav-brand" style="margin: 0 auto;">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+    </div>
+    <div class="sidebar-profile">
+      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&auto=format&fit=crop" alt="Avatar">
+      <div class="profile-info">
+        <span class="profile-name">Leo Mushroom</span>
+        <span class="profile-role">Pro Grower</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-link active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-layout-dashboard">
+          <rect width="7" height="9" x="3" y="3" rx="1" />
+          <rect width="7" height="5" x="14" y="3" rx="1" />
+          <rect width="7" height="9" x="14" y="12" rx="1" />
+          <rect width="7" height="5" x="3" y="16" rx="1" />
+        </svg>
+        Overview
+      </a>
+      <a href="dashboard-orders.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-package">
+          <path d="m7.5 4.27 9 5.15" />
+          <path
+            d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+          <path d="m3.3 7 8.7 5 8.7-5" />
+          <path d="M12 22V12" />
+        </svg>
+        My Orders
+      </a>
+      <a href="dashboard-courses.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-book-open">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+        My Courses
+      </a>
+      <a href="dashboard-settings.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-settings">
+          <path
+            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+        Settings
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="login.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-log-out">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" x2="9" y1="12" y2="12" />
+        </svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    <header class="dashboard-header">
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <button class="dashboard-toggle-btn" aria-label="Toggle Sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-menu">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="dash-header-title">Overview</h2>
+      </div>
+
+      <div class="dash-header-tools">
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <button class="notification-btn" aria-label="Notifications">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-bell">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+          </svg>
+          <span class="notification-badge"></span>
+        </button>
+
+      </div>
+    </header>
+
+    <div class="dashboard-content fade-in">
+
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-title">Active Orders</span>
+          <span class="kpi-value">2</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Courses Enrolled</span>
+          <span class="kpi-value">3</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Total Spent</span>
+          <span class="kpi-value">$184.50</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Grow Streak</span>
+          <span class="kpi-value">45 Days</span>
+        </div>
+      </div>
+
+      <!-- Continue Learning Strip -->
+      <div class="learning-strip fade-in">
+        <!-- Continue 
+        <img src="https://images.unsplash.com/photo-1629853995811-30bc128913b8?w=300&auto=format&fit=crop"
+          class="learning-thumb" alt="Course Image">Learning Strip -->
+        <div class="learning-content">
+          <h4 style="margin-bottom: var(--space-2);">Agar & Clean Room Tech</h4>
+          <div class="progress-container">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 60%;"></div>
+            </div>
+            <div class="progress-text">
+              <span>Next up: Pouring your first plates</span>
+              <span>60% Complete</span>
+            </div>
+          </div>
+        </div>
+        <a href="dashboard-courses.html" class="btn btn-secondary">Continue</a>
+      </div>
+
+      <!-- Recent Orders Mini Table -->
+      <div class="fade-in">
+        <h3 class="dash-section-title">Recent Orders</h3>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family: monospace; font-weight: 500;">#SHR-84920</td>
+                <td>Oct 10, 2026</td>
+                <td><span class="status-badge status-processing">Processing</span></td>
+                <td>$42.50</td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; font-weight: 500;">#SHR-84881</td>
+                <td>Oct 01, 2026</td>
+                <td><span class="status-badge status-shipped">Shipped</span></td>
+                <td>$89.00</td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; font-weight: 500;">#SHR-84102</td>
+                <td>Sept 15, 2026</td>
+                <td><span class="status-badge status-delivered">Delivered</span></td>
+                <td>$124.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

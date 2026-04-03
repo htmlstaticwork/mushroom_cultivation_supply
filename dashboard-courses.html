@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses | Shroom Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .courses-toolbar {
+      margin-bottom: var(--space-8);
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .filter-pill {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--theme-border);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--theme-text-muted);
+    }
+
+    .filter-pill.active {
+      background: var(--theme-text);
+      color: var(--theme-bg);
+      border-color: var(--theme-text);
+    }
+
+    .course-card {
+      align-items: stretch;
+      gap: var(--space-6);
+      padding: 0;
+    }
+
+    .course-card-content {
+      padding: var(--space-6);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-card .card-img-wrapper {
+      border-radius: 0;
+      margin-bottom: 0;
+      aspect-ratio: 16/9;
+    }
+
+    @media (min-width: 1440px) {
+      .card-grid.cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="dashboard-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="nav-brand" style="margin: 0 auto;">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+    </div>
+    <div class="sidebar-profile">
+      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&auto=format&fit=crop" alt="Avatar">
+      <div class="profile-info">
+        <span class="profile-name">Leo Mushroom</span>
+        <span class="profile-role">Pro Grower</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-layout-dashboard">
+          <rect width="7" height="9" x="3" y="3" rx="1" />
+          <rect width="7" height="5" x="14" y="3" rx="1" />
+          <rect width="7" height="9" x="14" y="12" rx="1" />
+          <rect width="7" height="5" x="3" y="16" rx="1" />
+        </svg>
+        Overview
+      </a>
+      <a href="dashboard-orders.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-package">
+          <path d="m7.5 4.27 9 5.15" />
+          <path
+            d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+          <path d="m3.3 7 8.7 5 8.7-5" />
+          <path d="M12 22V12" />
+        </svg>
+        My Orders
+      </a>
+      <a href="dashboard-courses.html" class="sidebar-link active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-book-open">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+        My Courses
+      </a>
+      <a href="dashboard-settings.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-settings">
+          <path
+            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+        Settings
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="login.html" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-log-out">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" x2="9" y1="12" y2="12" />
+        </svg>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    <header class="dashboard-header">
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <button class="dashboard-toggle-btn" aria-label="Toggle Sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-menu">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="dash-header-title">My Courses</h2>
+      </div>
+
+      <div class="dash-header-tools">
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <button class="notification-btn" aria-label="Notifications">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-bell">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+          </svg>
+          <span class="notification-badge"></span>
+        </button>
+
+      </div>
+    </header>
+
+    <div class="dashboard-content fade-in">
+
+      <div class="courses-toolbar">
+        <button class="filter-pill active">All</button>
+        <button class="filter-pill">In Progress</button>
+        <button class="filter-pill">Completed</button>
+      </div>
+
+      <div class="card-grid cols-4">
+        <!-- Course 1 -->
+        <div class="card course-card fade-in">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1589182373815-499aa1e523f2?w=600&auto=format&fit=crop"
+              class="card-img" alt="Course Image">
+          </div>
+          <div class="course-card-content">
+            <div
+              style="font-size: var(--font-size-sm); color: var(--color-secondary); margin-bottom: var(--space-2); font-weight: 500;">
+              Intermediate</div>
+            <h4 style="margin-bottom: var(--space-4); text-align: left;">Agar & Clean Room Tech</h4>
+
+            <div class="progress-container" style="margin-top: auto; margin-bottom: var(--space-6);">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 60%;"></div>
+              </div>
+              <div class="progress-text">
+                <span>12/20 Lessons</span>
+                <span>60% Complete</span>
+              </div>
+            </div>
+
+            <button class="btn btn-secondary btn-block">Continue Learning</button>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="card course-card fade-in" style="animation-delay: 0.1s;">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1629853995811-30bc128913b8?w=600&auto=format&fit=crop"
+              class="card-img" alt="Course Image">
+          </div>
+          <div class="course-card-content">
+            <div
+              style="font-size: var(--font-size-sm); color: var(--color-secondary); margin-bottom: var(--space-2); font-weight: 500;">
+              Beginner</div>
+            <h4 style="margin-bottom: var(--space-4); text-align: left;">Mushroom Cultivation 101</h4>
+
+            <div class="progress-container" style="margin-top: auto; margin-bottom: var(--space-6);">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 100%; background: var(--color-secondary);"></div>
+              </div>
+              <div class="progress-text">
+                <span>15/15 Lessons</span>
+                <span>100% Complete</span>
+              </div>
+            </div>
+
+            <button class="btn btn-secondary btn-block"
+              style="border-color: var(--theme-border); color: var(--theme-text);">Review Course</button>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="card course-card fade-in" style="animation-delay: 0.2s;">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1509355606670-07010f368f51?w=600&auto=format&fit=crop"
+              class="card-img" alt="Course Image">
+          </div>
+          <div class="course-card-content">
+            <div
+              style="font-size: var(--font-size-sm); color: var(--color-secondary); margin-bottom: var(--space-2); font-weight: 500;">
+              Advanced</div>
+            <h4 style="margin-bottom: var(--space-4); text-align: left;">Commercial Fruiting Chambers</h4>
+
+            <div class="progress-container" style="margin-top: auto; margin-bottom: var(--space-6);">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              <div class="progress-text">
+                <span>0/25 Lessons</span>
+                <span>0% Complete</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block">Start Course</button>
+          </div>
+        </div>
+        <!-- Course 4 -->
+        <div class="card course-card fade-in" style="animation-delay: 0.3s;">
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop"
+              class="card-img" alt="Course Image">
+          </div>
+          <div class="course-card-content">
+            <div
+              style="font-size: var(--font-size-sm); color: var(--color-secondary); margin-bottom: var(--space-2); font-weight: 500;">
+              Intermediate</div>
+            <h4 style="margin-bottom: var(--space-4); text-align: left;">Liquid Culture Mastery</h4>
+
+            <div class="progress-container" style="margin-top: auto; margin-bottom: var(--space-6);">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 30%;"></div>
+              </div>
+              <div class="progress-text">
+                <span>4/14 Lessons</span>
+                <span>30% Complete</span>
+              </div>
+            </div>
+
+            <button class="btn btn-secondary btn-block">Continue Learning</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

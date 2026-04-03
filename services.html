@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop & Courses | Shroom</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .page-header {
+      background: var(--theme-surface);
+      padding: calc(var(--header-height) + var(--space-20)) var(--space-6) var(--space-12);
+      text-align: center;
+      border-bottom: 1px solid var(--theme-border);
+    }
+
+    .page-header h1 {
+      font-size: var(--font-size-4xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-12);
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: var(--space-2) var(--space-6);
+      border: 1px solid var(--theme-border);
+      border-radius: var(--radius-xl);
+      font-weight: 500;
+      color: var(--theme-text-muted);
+      transition: all var(--transition-fast);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--color-primary);
+      color: var(--color-text-dark);
+      border-color: var(--color-primary);
+    }
+
+    html.dark .filter-btn:hover,
+    html.dark .filter-btn.active {
+      background: var(--color-secondary);
+      border-color: var(--color-secondary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar ... I will duplicate the exact HTML for the navbar since JS handles it, and this is vanilla HTML with no templating -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="home2.html" class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Shop</a>
+        </li>
+
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-tools nav-tools-desktop">
+        <div class="nav-divider"></div>
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="login.html" class="nav-link" style="font-weight: 600;">Login</a>
+        <a href="dashboard.html" class="nav-link" style="color: var(--color-secondary); font-weight: 600;">Dashboard</a>
+      </div>
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-menu">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-drawer-overlay"></div>
+  <div class="nav-drawer">
+    <div class="nav-drawer-header">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <button class="nav-drawer-close" aria-label="Close Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-drawer-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="services.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Shop</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link" style="color: var(--color-secondary);">Dashboard</a></li>
+      <li style="margin-top: var(--space-4);"><a href="login.html" class="btn btn-primary btn-block">Login</a></li>
+    </ul>
+    <div class="nav-drawer-tools">
+      <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-right">
+          <path d="M8 3 4 7l4 4" />
+          <path d="M4 7h16" />
+          <path d="m16 21 4-4-4-4" />
+          <path d="M20 17H4" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">RTL</span>
+      </button>
+      <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-moon">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-header fade-in">
+      <div class="container">
+        <h1>Supplies & Education</h1>
+        <p class="section-subtitle">Everything you need to successfully cultivate at home.</p>
+      </div>
+    </div>
+
+    <!-- Cultivation Supplies -->
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar fade-in">
+          <button class="filter-btn active">All Supplies</button>
+          <button class="filter-btn">Spawn</button>
+          <button class="filter-btn">Substrate</button>
+          <button class="filter-btn">Tools</button>
+        </div>
+
+        <h2 class="section-title fade-in">Cultivation Supplies</h2>
+        <div class="divider fade-in"></div>
+
+        <div class="card-grid cols-4" style="margin-top: var(--space-8);">
+          <div class="card fade-in">
+            <div class="card-img-wrapper"><img
+                src="https://images.unsplash.com/photo-1627962637207-6bb40283c79c?w=600&auto=format&fit=crop"
+                class="card-img" alt="Liquid Culture"></div>
+            <span class="card-tag">Spawn</span>
+            <h4 class="card-title">Lion's Mane Culture</h4>
+            <p class="card-desc">10ml syringe with Luer lock needle.</p>
+            <span class="card-price">$24.00</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+          <div class="card fade-in">
+            <div class="card-img-wrapper"><img
+                src="https://images.unsplash.com/photo-1616853245464-9be1bd27ab89?w=600&auto=format&fit=crop"
+                class="card-img" alt="Rye Grain"></div>
+            <span class="card-tag">Spawn</span>
+            <h4 class="card-title">Sterile Rye Berry Bag</h4>
+            <p class="card-desc">3lb bag with injection port.</p>
+            <span class="card-price">$18.50</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+          <div class="card fade-in">
+            <div class="card-img-wrapper"><img
+                src="https://images.unsplash.com/photo-1583091916301-ad26b27d42cf?w=600&auto=format&fit=crop"
+                class="card-img" alt="Substrate"></div>
+            <span class="card-tag">Substrate</span>
+            <h4 class="card-title">Master's Mix Block</h4>
+            <p class="card-desc">Hardwood sawdust and soy hulls.</p>
+            <span class="card-price">$22.00</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+          <div class="card fade-in">
+            <div class="card-img-wrapper"><img
+                src="https://images.unsplash.com/photo-1605335602353-d144e5ea7519?w=600&auto=format&fit=crop"
+                class="card-img" alt="Still Air Box"></div>
+            <span class="card-tag">Tools</span>
+            <h4 class="card-title">Beginner Still Air Box</h4>
+            <p class="card-desc">Maintain sterility at home.</p>
+            <span class="card-price">$45.00</span>
+            <button class="btn btn-accent btn-block">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Online Courses -->
+    <section class="section" style="background: var(--theme-surface);">
+      <div class="container">
+        <h2 class="section-title fade-in">Online Courses</h2>
+        <div class="divider fade-in"></div>
+
+        <div class="card-grid" style="margin-top: var(--space-8);">
+          <div class="card fade-in">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1589182373815-499aa1e523f2?w=800&auto=format&fit=crop"
+                class="card-img" alt="Course 1">
+            </div>
+            <span class="card-tag" style="background: var(--theme-border);">Beginner</span>
+            <h4 class="card-title">Mushroom Cultivation 101</h4>
+            <p class="card-desc">The absolute basics. Yield your first flush using pre-sterilized supplies and simple
+              techniques.</p>
+            <span class="card-price">$49.00</span>
+            <button class="btn btn-secondary btn-block">Enroll Now</button>
+          </div>
+          <div class="card fade-in">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1629853995811-30bc128913b8?w=800&auto=format&fit=crop"
+                class="card-img" alt="Course 2">
+            </div>
+            <span class="card-tag" style="background: var(--theme-border);">Intermediate</span>
+            <h4 class="card-title">Agar & Clean Room Tech</h4>
+            <p class="card-desc">Learn how to pour plates, isolate strains, and clone your best mushrooms in front of a
+              flow hood.</p>
+            <span class="card-price">$89.00</span>
+            <button class="btn btn-secondary btn-block">Enroll Now</button>
+          </div>
+          <div class="card fade-in">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1509355606670-07010f368f51?w=800&auto=format&fit=crop"
+                class="card-img" alt="Course 3">
+            </div>
+            <span class="card-tag" style="background: var(--theme-border);">Advanced</span>
+            <h4 class="card-title">Commercial Fruiting Chambers</h4>
+            <p class="card-desc">Designing, building, and automating environmental controls for maximum yield.</p>
+            <span class="card-price">$129.00</span>
+            <button class="btn btn-secondary btn-block">Enroll Now</button>
+          </div>
+          <div class="card fade-in" style="animation-delay: 0.1s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop"
+                class="card-img" alt="Course 4">
+            </div>
+            <span class="card-tag" style="background: var(--theme-border);">Intermediate</span>
+            <h4 class="card-title">Liquid Culture Mastery</h4>
+            <p class="card-desc">Create clean, fast-colonizing liquid cultures from scratch. Multiply your genetics
+              indefinitely.</p>
+            <span class="card-price">$69.00</span>
+            <button class="btn btn-secondary btn-block">Enroll Now</button>
+          </div>
+
+          <div class="card fade-in" style="animation-delay: 0.2s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&auto=format&fit=crop"
+                class="card-img" alt="Course 5">
+            </div>
+            <span class="card-tag" style="background: var(--theme-border);">Advanced</span>
+            <h4 class="card-title">Microscopy & Spore Work</h4>
+            <p class="card-desc">Learn to work with spore syringes, make prints, and identify contamination under a
+              microscope.</p>
+            <span class="card-price">$109.00</span>
+            <button class="btn btn-secondary btn-block">Enroll Now</button>
+          </div>
+
+          <div class="card fade-in" style="animation-delay: 0.3s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&auto=format&fit=crop"
+                class="card-img" alt="Course 6">
+            </div>
+            <span class="card-tag" style="background: var(--theme-border);">Beginner</span>
+            <h4 class="card-title">Outdoor & Log Cultivation</h4>
+            <p class="card-desc">Inoculate hardwood logs and outdoor beds with Shiitake, Wine Cap, and more. No lab
+              required.</p>
+            <span class="card-price">$39.00</span>
+            <button class="btn btn-secondary btn-block">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <!-- Same footer -->
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+          </a>
+          <p class="footer-tagline">Grow More. Learn More. Your trusted source for authentic mycology supplies and
+            education.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg></a>
+            <a href="#" class="social-link" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube">
+                <path
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                <path d="m10 15 5-3-5-3z" />
+              </svg></a>
+            <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer-heading">Shop</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">Grain Spawn</a></li>
+            <li><a href="services.html">Substrates</a></li>
+            <li><a href="services.html">Lab Tools</a></li>
+            <li><a href="services.html">Grow Kits</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-heading">Learn</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">All Courses</a></li>
+            <li><a href="blog.html">Free Guides</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Shroom LLC. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

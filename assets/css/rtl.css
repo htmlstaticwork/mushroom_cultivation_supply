@@ -1,0 +1,61 @@
+/* RTL Overrides */
+html {
+  direction: rtl;
+}
+
+/* Margin/Padding Flips */
+.nav-link::after {
+  transform-origin: left;
+}
+.nav-link:hover::after {
+  transform-origin: right;
+}
+
+/* Drawer Flip */
+.nav-drawer {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+.nav-drawer.active {
+  transform: translateX(0);
+}
+
+/* Auth Cards */
+.auth-toggles {
+  right: auto;
+  left: var(--space-6);
+}
+.input-icon-btn {
+  right: auto;
+  left: var(--space-3);
+}
+
+/* Dashboard Sidebar Flip */
+.dashboard-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--theme-border);
+  left: auto;
+  right: 0;
+}
+.dashboard-main {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+}
+@media (max-width: 1024px) {
+  .dashboard-sidebar {
+    transform: translateX(100%);
+  }
+  .dashboard-sidebar.active {
+    transform: translateX(0);
+  }
+  .dashboard-main {
+    margin-right: 0;
+  }
+}
+
+/* Notification Badge position */
+.notification-badge {
+  right: auto;
+  left: 0;
+}

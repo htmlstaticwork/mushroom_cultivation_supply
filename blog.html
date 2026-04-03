@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mushroom Blog | Shroom</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .page-header {
+      background: var(--theme-surface);
+      padding: calc(var(--header-height) + var(--space-20)) var(--space-6) var(--space-12);
+      text-align: center;
+      border-bottom: 1px solid var(--theme-border);
+    }
+
+    .page-header h1 {
+      font-size: var(--font-size-4xl);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Blog Specifics */
+    .featured-post {
+      display: flex;
+      background: var(--theme-surface);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: var(--space-12);
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .featured-post {
+        flex-direction: column;
+      }
+    }
+
+    .featured-img-wrapper {
+      flex: 1 1 50%;
+      min-height: 400px;
+    }
+
+    .featured-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-content {
+      flex: 1 1 50%;
+      padding: var(--space-12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .blog-card {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .blog-card .card-img-wrapper {
+      aspect-ratio: 16/10;
+    }
+
+    .blog-card .card-title {
+      text-align: left;
+      font-size: var(--font-size-lg);
+    }
+
+    .blog-card .card-desc {
+      text-align: left;
+      flex-grow: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+      color: var(--theme-text-muted);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--space-2);
+    }
+
+    .blog-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+
+    @media (max-width: 1024px) {
+      .blog-cols {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-cols {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .blog-cols {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--theme-surface);
+      padding: var(--space-20) var(--space-6);
+    }
+
+    .faq-list {
+      max-width: 780px;
+      margin: var(--space-12) auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .faq-item {
+      border: 1px solid var(--theme-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--theme-bg);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-6);
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--theme-text);
+      cursor: pointer;
+      background: none;
+      border: none;
+      gap: var(--space-4);
+    }
+
+    .faq-question:hover {
+      color: var(--color-secondary);
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--theme-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-secondary);
+      transition: transform var(--transition-base), background var(--transition-base);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--color-secondary);
+      border-color: var(--color-secondary);
+      color: white;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 var(--space-6);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 var(--space-6) var(--space-6);
+    }
+
+    .faq-answer p {
+      color: var(--theme-text-muted);
+      font-size: var(--font-size-base);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="home2.html" class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link">Shop</a></li>
+
+        <li><a href="blog.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-tools nav-tools-desktop">
+        <div class="nav-divider"></div>
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="login.html" class="nav-link" style="font-weight: 600;">Login</a>
+        <a href="dashboard.html" class="nav-link" style="color: var(--color-secondary); font-weight: 600;">Dashboard</a>
+      </div>
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-menu">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hamburger Drawer -->
+  <div class="nav-drawer-overlay"></div>
+  <div class="nav-drawer">
+    <div class="nav-drawer-header">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <button class="nav-drawer-close" aria-label="Close Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-drawer-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="services.html" class="nav-link">Shop</a></li>
+
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link" style="color: var(--color-secondary);">Dashboard</a></li>
+      <li style="margin-top: var(--space-4);"><a href="login.html" class="btn btn-primary btn-block">Login</a></li>
+    </ul>
+    <div class="nav-drawer-tools">
+      <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-right">
+          <path d="M8 3 4 7l4 4" />
+          <path d="M4 7h16" />
+          <path d="m16 21 4-4-4-4" />
+          <path d="M20 17H4" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">RTL</span>
+      </button>
+      <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-moon">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-header fade-in">
+      <div class="container">
+        <h1>Field Notes & Guides</h1>
+        <p class="section-subtitle">Deep dives into mycology, cultivation recipes, and farm updates.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- Featured Post -->
+        <article class="featured-post fade-in">
+          <div class="featured-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1594917637841-f76db0cced01?w=1200&auto=format&fit=crop"
+              alt="Mushroom Forest">
+          </div>
+          <div class="featured-content" style="text-align: center; align-items: center;">
+            <div class="blog-meta" style="justify-content: center;">
+              <span class="card-tag">Advanced</span>
+              <span>October 12, 2026</span>
+            </div>
+            <h2 style="font-size: var(--font-size-3xl); margin-top: var(--space-4);">Perfecting the Hardwood Substrate
+              Mix</h2>
+            <p style="color: var(--theme-text-muted); font-size: var(--font-size-lg); margin-bottom: var(--space-8);">
+              Our definitive guide to formulating, hydrating, and sterilizing supplemented sawdust blocks for gourmet
+              species like Shiitake and Lion's Mane.</p>
+            <a href="#" class="btn btn-secondary">Read Article</a>
+          </div>
+        </article>
+
+        <div class="divider fade-in" style="margin: var(--space-12) auto;"></div>
+
+        <!-- Blog Grid -->
+        <div class="blog-cols">
+          <article class="card blog-card fade-in">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1627962637207-6bb40283c79c?w=600&auto=format&fit=crop"
+                class="card-img" alt="Liquid Culture Basics">
+            </div>
+            <div class="blog-meta">
+              <span class="card-tag">Beginners</span>
+              <span>Sept 28, 2026</span>
+            </div>
+            <h4 class="card-title">Liquid Culture Basics</h4>
+            <p class="card-desc">How to expand your mycelium 100x using a simple nutrient broth and a magnetic stirrer.
+            </p>
+            <a href="#" class="auth-link">Read More &rarr;</a>
+          </article>
+
+          <article class="card blog-card fade-in" style="animation-delay: 0.1s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format&fit=crop"
+                class="card-img" alt="Farm Update">
+            </div>
+            <div class="blog-meta">
+              <span class="card-tag">Farm Life</span>
+              <span>Sept 15, 2026</span>
+            </div>
+            <h4 class="card-title">Meet the New Cultivation Team</h4>
+            <p class="card-desc">We've expanded our lab operations! Meet the mycologists behind our new spawn varieties.
+            </p>
+            <a href="#" class="auth-link">Read More &rarr;</a>
+          </article>
+
+          <article class="card blog-card fade-in" style="animation-delay: 0.2s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1616853245464-9be1bd27ab89?w=600&auto=format&fit=crop"
+                class="card-img" alt="Grain Prep">
+            </div>
+            <div class="blog-meta">
+              <span class="card-tag">Recipes</span>
+              <span>Sept 02, 2026</span>
+            </div>
+            <h4 class="card-title">No-Soak/No-Simmer Grain Prep</h4>
+            <p class="card-desc">A controversial but effective way to prepare rye berries skipping the simmering step.
+            </p>
+            <a href="#" class="auth-link">Read More &rarr;</a>
+          </article>
+          <article class="card blog-card fade-in" style="animation-delay: 0.1s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=600&auto=format&fit=crop"
+                class="card-img" alt="Contamination Guide">
+            </div>
+            <div class="blog-meta">
+              <span class="card-tag">Troubleshooting</span>
+              <span>Aug 20, 2026</span>
+            </div>
+            <h4 class="card-title">Identifying & Preventing Contamination</h4>
+            <p class="card-desc">Green, black, or pink fuzz? Learn to identify the 5 most common contaminants and stop
+              them before they spread.</p>
+            <a href="#" class="auth-link">Read More &rarr;</a>
+          </article>
+
+          <article class="card blog-card fade-in" style="animation-delay: 0.2s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&auto=format&fit=crop"
+                class="card-img" alt="Agar Basics">
+            </div>
+            <div class="blog-meta">
+              <span class="card-tag">Advanced</span>
+              <span>Aug 08, 2026</span>
+            </div>
+            <h4 class="card-title">Your First Agar Plate in 5 Steps</h4>
+            <p class="card-desc">Agar work sounds intimidating but it doesn't have to be. Here's the simplest possible
+              workflow to get started.</p>
+            <a href="#" class="auth-link">Read More &rarr;</a>
+          </article>
+
+          <article class="card blog-card fade-in" style="animation-delay: 0.3s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&auto=format&fit=crop"
+                class="card-img" alt="Outdoor Growing">
+            </div>
+            <div class="blog-meta">
+              <span class="card-tag">Outdoor</span>
+              <span>Jul 25, 2026</span>
+            </div>
+            <h4 class="card-title">Growing Shiitake on Logs the Right Way</h4>
+            <p class="card-desc">Skip the grow kit. A properly inoculated oak log will fruit Shiitake for up to 5 years
+              with zero ongoing cost.</p>
+            <a href="#" class="auth-link">Read More &rarr;</a>
+          </article>
+        </div>
+
+      </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+        <div class="divider fade-in"></div>
+        <p class="section-subtitle fade-in">Everything you need to know before you start growing.</p>
+
+        <div class="faq-list">
+
+          <div class="faq-item fade-in">
+            <button class="faq-question">
+              What's the easiest mushroom to grow as a beginner?
+              <span class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M12 5v14" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Oyster mushrooms — specifically Pearl or Blue Oyster — are by far the most beginner-friendly. They
+                colonize fast, tolerate a range of temperatures, and fruit aggressively even in less-than-ideal
+                conditions. Our Mushroom Cultivation 101 course covers everything you need to get your first flush in
+                under 3 weeks.</p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in" style="animation-delay: 0.1s;">
+            <button class="faq-question">
+              How do I know if my substrate or grain is contaminated?
+              <span class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M12 5v14" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>The most common signs are green, black, or pink patches on your grain or substrate — these are mold
+                colonies competing with your mycelium. A sour or unusual smell is another strong indicator. White fluffy
+                growth is almost always healthy mycelium, but if it looks patchy, wet, or has color, pull it
+                immediately. Check our contamination guide in the blog for a full visual reference.</p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in" style="animation-delay: 0.2s;">
+            <button class="faq-question">
+              Do I need a flow hood or cleanroom to start?
+              <span class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M12 5v14" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>No — most beginners start with a simple Still Air Box (SAB), which is just a clear tote with arm holes.
+                It traps still air and dramatically reduces contamination risk during inoculation. A flow hood is a
+                significant upgrade for serious growers doing agar work or large batch grain transfers, but it's
+                absolutely not required to get your first few successful grows.</p>
+            </div>
+          </div>
+
+          <div class="faq-item fade-in" style="animation-delay: 0.3s;">
+            <button class="faq-question">
+              How long does grain spawn stay viable after I receive it?
+              <span class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M12 5v14" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Our grain spawn is at peak viability on arrival and will remain healthy for up to 4 weeks when stored
+                in a refrigerator between 35–45°F. Avoid freezing — this damages the mycelium. For best results,
+                inoculate within the first week of receiving your order. All our spawn ships with a packing date so you
+                always know exactly how fresh it is.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Same footer -->
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+          </a>
+          <p class="footer-tagline">Grow More. Learn More. Your trusted source for authentic mycology supplies and
+            education.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg></a>
+            <a href="#" class="social-link" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube">
+                <path
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                <path d="m10 15 5-3-5-3z" />
+              </svg></a>
+            <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer-heading">Shop</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">Grain Spawn</a></li>
+            <li><a href="services.html">Substrates</a></li>
+            <li><a href="services.html">Lab Tools</a></li>
+            <li><a href="services.html">Grow Kits</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-heading">Learn</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">All Courses</a></li>
+            <li><a href="blog.html">Free Guides</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Shroom LLC. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function (el) {
+          el.classList.remove('open');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

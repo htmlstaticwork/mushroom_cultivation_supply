@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Shroom</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .page-header {
+      background: var(--theme-surface);
+      padding: calc(var(--header-height) + var(--space-20)) var(--space-6) var(--space-12);
+      text-align: center;
+      border-bottom: 1px solid var(--theme-border);
+    }
+
+    .page-header h1 {
+      font-size: var(--font-size-4xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: var(--space-12);
+    }
+
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form-wrapper {
+      background: var(--theme-surface);
+      padding: var(--space-12);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--theme-border);
+    }
+
+    .contact-form .form-group {
+      margin-bottom: var(--space-6);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .info-card {
+      background: var(--theme-surface);
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+      border: 1px solid var(--theme-border);
+    }
+
+    .info-icon {
+      color: var(--color-secondary);
+      background: var(--theme-bg);
+      padding: var(--space-3);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .map-section {
+      margin-top: var(--space-20);
+      height: 450px;
+      width: 100%;
+      border-top: 1px solid var(--theme-border);
+      border-bottom: 1px solid var(--theme-border);
+      background: var(--theme-surface);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(1) opacity(0.8);
+      transition: filter 0.3s ease;
+    }
+
+    html.dark .map-section iframe {
+      filter: grayscale(1) invert(0.9) opacity(0.6);
+    }
+
+    .map-section:hover iframe {
+      filter: grayscale(0.2) opacity(1);
+    }
+
+    html.dark .map-section:hover iframe {
+      filter: grayscale(0.2) invert(0.9) opacity(0.8);
+    }
+
+    @media (max-width: 360px) {
+      .contact-layout {
+        gap: var(--space-8);
+      }
+
+      .contact-form-wrapper {
+        padding: var(--space-6);
+        text-align: center;
+      }
+
+      .info-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="home2.html" class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link">Shop</a></li>
+
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Contact</a>
+        </li>
+      </ul>
+      <div class="nav-tools nav-tools-desktop">
+        <div class="nav-divider"></div>
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="login.html" class="nav-link" style="font-weight: 600;">Login</a>
+        <a href="dashboard.html" class="nav-link" style="color: var(--color-secondary); font-weight: 600;">Dashboard</a>
+      </div>
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-menu">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hamburger Drawer -->
+  <div class="nav-drawer-overlay"></div>
+  <div class="nav-drawer">
+    <div class="nav-drawer-header">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <button class="nav-drawer-close" aria-label="Close Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-drawer-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="services.html" class="nav-link">Shop</a></li>
+
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link" style="color: var(--color-secondary);">Dashboard</a></li>
+      <li style="margin-top: var(--space-4);"><a href="login.html" class="btn btn-primary btn-block">Login</a></li>
+    </ul>
+    <div class="nav-drawer-tools">
+      <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-right">
+          <path d="M8 3 4 7l4 4" />
+          <path d="M4 7h16" />
+          <path d="m16 21 4-4-4-4" />
+          <path d="M20 17H4" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">RTL</span>
+      </button>
+      <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-moon">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <div class="page-header fade-in">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p class="section-subtitle">Have questions about your order or our courses? We're here to help.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container contact-layout">
+
+        <!-- Form -->
+        <div class="contact-form-wrapper fade-in">
+          <h3 style="margin-bottom: var(--space-6);">Send a Message</h3>
+          <form class="contact-form" action="#" onsubmit="event.preventDefault(); alert('Message sent!');">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" id="name" class="form-input" placeholder="Paul Stamets" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" class="form-input" placeholder="paul@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-input" placeholder="Order Inquiry" required>
+            </div>
+            <div class="form-group">
+              <label for="msg" class="form-label">Message</label>
+              <textarea id="msg" class="form-input" placeholder="How can we help?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="contact-info">
+          <div class="info-card fade-in"
+            style="animation-delay: 0.1s; flex-direction: column; align-items: center; text-align: center;">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-map-pin">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <h5 style="margin-bottom: var(--space-2);">Farm Address</h5>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">123 Spore Lane<br>Olympia, WA
+                98501</p>
+            </div>
+          </div>
+
+          <div class="info-card fade-in"
+            style="animation-delay: 0.2s; flex-direction: column; align-items: center; text-align: center;">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-phone">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div>
+              <h5 style="margin-bottom: var(--space-2);">Phone</h5>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">(555) 123-4567<br>Mon-Fri,
+                9am-5pm PST</p>
+            </div>
+          </div>
+
+          <div class="info-card fade-in"
+            style="animation-delay: 0.3s; flex-direction: column; align-items: center; text-align: center;">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <div>
+              <h5 style="margin-bottom: var(--space-2);">Email</h5>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">support@shroom.farm<br>We reply
+                within 24hrs</p>
+            </div>
+          </div>
+
+          <div class="info-card fade-in"
+            style="animation-delay: 0.4s; flex-direction: column; align-items: center; text-align: center; gap: var(--space-4);">
+            <div>
+              <h5 style="margin-bottom: var(--space-1);">Follow Us</h5>
+              <p style="color: var(--theme-text-muted); font-size: var(--font-size-sm);">Stay connected for grow tips,
+                new strains & course drops.</p>
+            </div>
+            <div style="display: flex; gap: var(--space-3); justify-content: center;">
+              <a href="#" aria-label="Instagram"
+                style="width: 44px; height: 44px; border-radius: 50%; background: var(--theme-bg); border: 1px solid var(--theme-border); display: flex; align-items: center; justify-content: center; color: var(--color-secondary); transition: background var(--transition-fast), color var(--transition-fast);"
+                onmouseover="this.style.background='var(--color-secondary)'; this.style.color='white';"
+                onmouseout="this.style.background='var(--theme-bg)'; this.style.color='var(--color-secondary)';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </a>
+              <a href="#" aria-label="YouTube"
+                style="width: 44px; height: 44px; border-radius: 50%; background: var(--theme-bg); border: 1px solid var(--theme-border); display: flex; align-items: center; justify-content: center; color: var(--color-secondary); transition: background var(--transition-fast), color var(--transition-fast);"
+                onmouseover="this.style.background='var(--color-secondary)'; this.style.color='white';"
+                onmouseout="this.style.background='var(--theme-bg)'; this.style.color='var(--color-secondary)';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                  <path d="m10 15 5-3-5-3z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook"
+                style="width: 44px; height: 44px; border-radius: 50%; background: var(--theme-bg); border: 1px solid var(--theme-border); display: flex; align-items: center; justify-content: center; color: var(--color-secondary); transition: background var(--transition-fast), color var(--transition-fast);"
+                onmouseover="this.style.background='var(--color-secondary)'; this.style.color='white';"
+                onmouseout="this.style.background='var(--theme-bg)'; this.style.color='var(--color-secondary)';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="TikTok"
+                style="width: 44px; height: 44px; border-radius: 50%; background: var(--theme-bg); border: 1px solid var(--theme-border); display: flex; align-items: center; justify-content: center; color: var(--color-secondary); transition: background var(--transition-fast), color var(--transition-fast);"
+                onmouseover="this.style.background='var(--color-secondary)'; this.style.color='white';"
+                onmouseout="this.style.background='var(--theme-bg)'; this.style.color='var(--color-secondary)';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d172044.8023451559!2d-122.9515206!3d47.0378741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549103e3a968987b%3A0x676233b2a2656923!2sOlympia%2C%20WA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <!-- Same footer -->
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+          </a>
+          <p class="footer-tagline">Grow More. Learn More. Your trusted source for authentic mycology supplies and
+            education.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg></a>
+            <a href="#" class="social-link" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube">
+                <path
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                <path d="m10 15 5-3-5-3z" />
+              </svg></a>
+            <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer-heading">Shop</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">Grain Spawn</a></li>
+            <li><a href="services.html">Substrates</a></li>
+            <li><a href="services.html">Lab Tools</a></li>
+            <li><a href="services.html">Grow Kits</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-heading">Learn</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">All Courses</a></li>
+            <li><a href="blog.html">Free Guides</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Shroom LLC. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
