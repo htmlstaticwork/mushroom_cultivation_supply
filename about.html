@@ -12,13 +12,13 @@
   <style>
     /* About Page Specific Styles */
     .hero-about {
-      height: 80vh;
-      min-height: 500px;
+      height: 40vh;
+      min-height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(rgba(15, 11, 8, 0.7), rgba(15, 11, 8, 0.7)),
-        url('https://images.unsplash.com/photo-1508313880080-c4bef0730395?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+        url('assets/images/about-hero-bg.jpg') center/cover no-repeat;
       text-align: center;
       color: white;
       padding-top: var(--header-height);
@@ -179,6 +179,21 @@
       font-size: var(--font-size-sm);
       color: var(--theme-text-muted);
     }
+
+    .page-header {
+      background: linear-gradient(to bottom, rgba(15, 11, 8, 0.5), rgba(15, 11, 8, 0.75)),
+        url('assets/images/about-hero-bg.jpg') center/cover no-repeat;
+      color: white;
+      border-bottom: none;
+    }
+
+    .page-header h1 {
+      color: white;
+    }
+
+    .page-header p {
+      color: rgba(232, 222, 202, 0.85);
+    }
   </style>
 </head>
 
@@ -295,10 +310,9 @@
     <!-- Section 1: Page Hero -->
     <section class="hero-about">
       <div class="container hero-about-content fade-in">
-        <span class="hero-about-label">Our Story</span>
-        <h1>Rooted in the Science of Growth</h1>
-        <p>From a small home laboratory to a national leader in mycology, our journey has been driven by a singular
-          obsession: the perfection of the mycelial network.</p>
+
+        <h1>Rooted in the Science</h1>
+        <p>From a small home laboratory to a national leader in mycology and mushroom growth.</p>
       </div>
     </section>
 
@@ -486,7 +500,31 @@
       </div>
     </div>
   </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+
   <script src="assets/js/main.js"></script>
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 
 </html>
