@@ -422,6 +422,36 @@
     .category-card:hover .category-card-arrow {
       gap: var(--space-4);
     }
+
+    /* Footer Newsletter Fix for Visibility and Layout */
+    .footer-newsletter .newsletter-form {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      gap: 0 !important; /* Joint layout */
+      justify-content: flex-start !important;
+      max-width: 500px !important;
+      margin: 0 !important;
+    }
+
+    .footer-newsletter .newsletter-input {
+      background: var(--theme-bg) !important;
+      border: 1px solid var(--theme-border) !important;
+      border-right: none !important;
+      border-radius: var(--radius-md) 0 0 var(--radius-md) !important;
+      color: var(--theme-text) !important;
+      flex: 1 !important;
+    }
+
+    .footer-newsletter .newsletter-btn {
+      border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+      border-left: none !important;
+    }
+
+    .footer-newsletter .newsletter-input::placeholder {
+      color: var(--theme-text-muted) !important;
+    }
+
   </style>
 </head>
 
@@ -438,7 +468,7 @@
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="home2.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Home 2</a></li>
         <li><a href="services.html" class="nav-link">Shop</a></li>
-
+        <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="blog.html" class="nav-link">Blog</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
@@ -497,7 +527,7 @@
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="home2.html" class="nav-link">Home 2</a></li>
       <li><a href="services.html" class="nav-link">Shop</a></li>
-
+      <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="blog.html" class="nav-link">Blog</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
       <li><a href="dashboard.html" class="nav-link" style="color: var(--color-secondary);">Dashboard</a></li>
@@ -706,13 +736,14 @@
       <p class="fade-in">New strains, course drops, and cultivation tips — straight to your inbox. No spam. Unsubscribe
         anytime.</p>
       <div class="newsletter-form fade-in">
-        <input type="email" class="newsletter-input" placeholder="your@email.com">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" style="text-align: center;">
         <button class="btn btn-secondary"
           style="border-color: var(--color-secondary); color: var(--color-secondary);">Subscribe</button>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -774,10 +805,27 @@
         <div>
           <h5 class="footer-heading">Company</h5>
           <ul class="footer-links">
-            <li><a href="#">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="#">FAQ</a></li>
           </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h5 class="footer-heading">Grow With Us</h5>
+          <p class="newsletter-description">Cultivate your inbox with growing tips, product drops, and exclusive
+            offers.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">
+              <span>Subscribe</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-right">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
 

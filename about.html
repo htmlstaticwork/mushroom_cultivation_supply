@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Shroom — Premium Mushroom Cultivation</title>
+  <meta name="description"
+    content="Discover the story behind Shroom, our mission to provide commercial-grade genetics, and the team dedicated to advancing the science of growth.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/shroom_favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* About Page Specific Styles */
+    .hero-about {
+      height: 80vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(15, 11, 8, 0.7), rgba(15, 11, 8, 0.7)),
+        url('https://images.unsplash.com/photo-1508313880080-c4bef0730395?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+      text-align: center;
+      color: white;
+      padding-top: var(--header-height);
+    }
+
+    .hero-about-content {
+      max-width: 800px;
+    }
+
+    .hero-about-label {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--space-4);
+      display: block;
+      color: var(--color-secondary);
+    }
+
+    .hero-about h1 {
+      color: white;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      margin-bottom: var(--space-6);
+      line-height: 1.1;
+    }
+
+    .hero-about p {
+      font-size: var(--font-size-lg);
+      color: rgba(232, 222, 202, 0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Mission Section */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .mission-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-10);
+      }
+    }
+
+    .mission-quote {
+      font-size: var(--font-size-4xl);
+      line-height: 1.2;
+      color: var(--color-primary);
+      position: relative;
+    }
+
+    html.dark .mission-quote {
+      color: var(--color-secondary);
+    }
+
+    .mission-text p {
+      margin-bottom: var(--space-6);
+      font-size: var(--font-size-lg);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: var(--theme-surface);
+      border-top: 1px solid var(--theme-border);
+      border-bottom: 1px solid var(--theme-border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-item h3 {
+      font-size: var(--font-size-5xl);
+      margin-bottom: var(--space-2);
+      color: var(--color-secondary);
+    }
+
+    .stat-item p {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      color: var(--theme-text-muted);
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+
+    @media (max-width: 992px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .team-card .card-img-wrapper {
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      width: 180px;
+      margin: 0 auto var(--space-6);
+      border: 4px solid var(--theme-border);
+    }
+
+    .team-role {
+      font-size: var(--font-size-xs);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-secondary);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+
+    .team-bio {
+      text-align: center;
+      font-size: var(--font-size-sm);
+      color: var(--theme-text-muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="home2.html" class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link">Shop</a></li>
+        <li><a href="about.html" class="nav-link active"
+            style="color: var(--color-primary); font-weight: 700;">About</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-tools nav-tools-desktop">
+        <div class="nav-divider"></div>
+        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left-right">
+            <path d="M8 3 4 7l4 4" />
+            <path d="M4 7h16" />
+            <path d="m16 21 4-4-4-4" />
+            <path d="M20 17H4" />
+          </svg>
+        </button>
+        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="login.html" class="nav-link" style="font-weight: 600;">Login</a>
+        <a href="dashboard.html" class="nav-link" style="color: var(--color-secondary); font-weight: 600;">Dashboard</a>
+      </div>
+
+      <button class="hamburger-btn" aria-label="Open Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-menu">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hamburger Drawer -->
+  <div class="nav-drawer-overlay"></div>
+  <div class="nav-drawer">
+    <div class="nav-drawer-header">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+      </a>
+      <button class="nav-drawer-close" aria-label="Close Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-drawer-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="services.html" class="nav-link">Shop</a></li>
+      <li><a href="about.html" class="nav-link active">About</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link" style="color: var(--color-secondary);">Dashboard</a></li>
+      <li style="margin-top: var(--space-4);"><a href="login.html" class="btn btn-primary btn-block">Login</a></li>
+    </ul>
+    <div class="nav-drawer-tools">
+      <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle RTL"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-right">
+          <path d="M8 3 4 7l4 4" />
+          <path d="M4 7h16" />
+          <path d="m16 21 4-4-4-4" />
+          <path d="M20 17H4" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">RTL</span>
+      </button>
+      <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme"
+        style="width: auto; height: auto; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-moon">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+        <span style="font-size: var(--font-size-sm); font-weight: 500;">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section 1: Page Hero -->
+    <section class="hero-about">
+      <div class="container hero-about-content fade-in">
+        <span class="hero-about-label">Our Story</span>
+        <h1>Rooted in the Science of Growth</h1>
+        <p>From a small home laboratory to a national leader in mycology, our journey has been driven by a singular
+          obsession: the perfection of the mycelial network.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Mission Statement -->
+    <section class="section">
+      <div class="container mission-grid">
+        <div class="mission-left fade-in">
+          <h2 class="mission-quote">"We believe every grower deserves commercial-grade genetics."</h2>
+          <div class="divider" style="margin: var(--space-8) 0;"></div>
+        </div>
+        <div class="mission-text fade-in" style="animation-delay: 0.1s;">
+          <p>Founded in 2018, Shroom began with a simple observation: the tools available to home cultivators were often
+            unreliable, prone to contamination, and lacked the genetic vigor required for high-yield harvests.</p>
+          <p>We built our Class 100 cleanroom to bridge this gap. By applying industrial-grade sterilization techniques
+            and rigorous genetic isolation to gourmet and functional mushroom strains, we've empowered a community of
+            over 50,000 growers to succeed from their very first flush.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Stats Section -->
+    <section class="section stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item fade-in">
+            <h3>80+</h3>
+            <p>Isolated Strains</p>
+          </div>
+          <div class="stat-item fade-in" style="animation-delay: 0.1s;">
+            <h3>50k+</h3>
+            <p>Happy Growers</p>
+          </div>
+          <div class="stat-item fade-in" style="animation-delay: 0.2s;">
+            <h3>6</h3>
+            <p>Years of Research</p>
+          </div>
+          <div class="stat-item fade-in" style="animation-delay: 0.3s;">
+            <h3>100%</h3>
+            <p>Sterile Guarantee</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Meet the Team -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--space-12);">
+          <h2 class="section-title fade-in">Meet the Team</h2>
+          <p class="section-subtitle fade-in">The scientists, cultivators, and thinkers behind the brand.</p>
+          <div class="divider fade-in"></div>
+        </div>
+
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <div class="card team-card fade-in">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+                alt="Dr. Elias Thorne" class="card-img">
+            </div>
+            <span class="team-role">Lead Mycologist</span>
+            <h3 class="card-title">Dr. Elias Thorne</h3>
+            <p class="team-bio">With a PhD in Fungal Biology, Elias oversees all genetic isolation and lab protocols.
+            </p>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="card team-card fade-in" style="animation-delay: 0.1s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"
+                alt="Sarah Jenkins" class="card-img">
+            </div>
+            <span class="team-role">Head of Cultivation</span>
+            <h3 class="card-title">Sarah Jenkins</h3>
+            <p class="team-bio">Sarah brings 15 years of commercial mushroom farming experience to our substrate
+              designs.</p>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="card team-card fade-in" style="animation-delay: 0.2s;">
+            <div class="card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop"
+                alt="Marcus Chen" class="card-img">
+            </div>
+            <span class="team-role">Education Director</span>
+            <h3 class="card-title">Marcus Chen</h3>
+            <p class="team-bio">Marcus translates complex laboratory science into easy-to-follow courses for our
+              community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/images/shroom_logo.svg" alt="Shroom" height="36" style="display:block;">
+          </a>
+          <p class="footer-tagline">Grow More. Learn More. Your trusted source for authentic mycology supplies and
+            education.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-instagram">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-youtube">
+                <path
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+                <path d="m10 15 5-3-5-3z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Shop</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">Grain Spawn</a></li>
+            <li><a href="services.html">Substrates</a></li>
+            <li><a href="services.html">Lab Tools</a></li>
+            <li><a href="services.html">Grow Kits</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Learn</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">All Courses</a></li>
+            <li><a href="blog.html">Free Guides</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h5 class="footer-heading">Grow With Us</h5>
+          <p class="newsletter-description">Cultivate your inbox with growing tips, product drops, and exclusive
+            offers.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">
+              <span>Subscribe</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-right">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Shroom LLC. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
