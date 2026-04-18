@@ -938,6 +938,8 @@ html.dark .sidebar-link.active {
 
 .dashboard-toggle-btn {
   display: none;
+  color: var(--theme-text);
+  padding: var(--space-1);
 }
 
 /* Footer */
@@ -1307,6 +1309,23 @@ html.dark .progress-bar-fill {
     padding-top: 0px;
     margin-top: 0px;
   }
+
+  /* Dashboard (Collapse at 1024px) */
+  .dashboard-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .dashboard-sidebar.active {
+    transform: translateX(0);
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+  }
+
+  .dashboard-toggle-btn {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1323,21 +1342,8 @@ html.dark .progress-bar-fill {
     margin-bottom: 0px;
   }
 
-  /* Dashboard (Collapse at 768px) */
-  .dashboard-sidebar {
-    transform: translateX(-100%);
-  }
-
-  .dashboard-sidebar.active {
-    transform: translateX(0);
-  }
-
   .dashboard-main {
     margin-left: 0;
-  }
-
-  .dashboard-toggle-btn {
-    display: block;
   }
 
   .footer-bottom {
@@ -1430,6 +1436,20 @@ html.dark .progress-bar-fill {
 
   .auth-card {
     padding: var(--space-6);
+  }
+
+  /* Ensure auth toggles don't touch the container and are at the top right */
+  .auth-page {
+    position: relative;
+    align-items: flex-start;
+    padding-top: var(--space-16);
+    /* Extra padding for toggles */
+  }
+
+  .auth-toggles {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
   }
 }
 

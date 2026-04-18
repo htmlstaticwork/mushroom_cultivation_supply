@@ -59,3 +59,10 @@ html {
   right: auto;
   left: 0;
 }
+
+@media (max-width: 360px) {
+  .auth-toggles {
+    right: auto;
+    left: var(--space-4);
+  }
+}
