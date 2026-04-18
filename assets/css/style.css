@@ -5,9 +5,9 @@
   --color-primary: #4A3728;
   --color-secondary: #8B6914;
   --color-bg-light: #F5F0E8;
-  --color-bg-dark: #0F0B08;
+  --color-bg-dark: #000000;
   --color-surface-light: #EDE6D6;
-  --color-surface-dark: #1A1208;
+  --color-surface-dark: #121212;
   --color-text-light: #2C1F12;
   --color-text-dark: #E8DECA;
   --color-muted: #9E8E7A;
@@ -61,6 +61,10 @@
   /* Components */
   --header-height: 80px;
   --sidebar-width: 260px;
+
+  /* Logo Sizes client */
+  --logo-height-nav: 48px;
+  --logo-height-auth: 80px;
 }
 
 /* Dark Mode */
@@ -68,8 +72,8 @@ html.dark {
   --theme-bg: var(--color-bg-dark);
   --theme-surface: var(--color-surface-dark);
   --theme-text: var(--color-text-dark);
-  --theme-text-muted: rgba(232, 222, 202, 0.6);
-  --theme-border: rgba(232, 222, 202, 0.15);
+  --theme-text-muted: rgba(232, 222, 202, 0.65);
+  --theme-border: rgba(232, 222, 202, 0.25);
 }
 
 /* Reset / Base */
@@ -263,12 +267,12 @@ html.dark .btn-secondary:hover {
 
 .btn-accent {
   background-color: var(--color-secondary);
-  color: var(--color-primary);
+  color: #FFFFFF;
 }
 
 .btn-accent:hover {
   background-color: #7a5c10;
-  color: var(--color-primary);
+  color: #FFFFFF;
 }
 
 .btn-block {
@@ -313,6 +317,13 @@ html.dark .navbar.scrolled {
   font-size: var(--font-size-2xl);
   color: var(--theme-text);
   letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand img {
+  height: var(--logo-height-nav) !important;
+  width: auto;
 }
 
 .nav-menu {
@@ -475,8 +486,15 @@ html.dark .navbar.scrolled {
   position: relative;
 }
 
+.auth-logo img {
+  height: var(--logo-height-auth) !important;
+  width: auto;
+  margin: 0 auto;
+}
+
 html.dark .auth-card {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--theme-border);
 }
 
 .auth-toggles {
@@ -640,6 +658,10 @@ html.dark .auth-card {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .card {
+  border: 1px solid var(--theme-border);
 }
 
 html.dark .card:hover {
@@ -1035,13 +1057,13 @@ html.dark .social-link:hover {
 
 .newsletter-btn:hover {
   background: var(--color-secondary);
-  color: var(--color-primary);
+  color: #FFFFFF;
   transform: translateY(-1px);
 }
 
 html.dark .newsletter-btn {
   background: var(--color-secondary);
-  color: var(--color-primary);
+  color: #FFFFFF;
 }
 
 html.dark .newsletter-btn:hover {
@@ -1410,6 +1432,7 @@ html.dark .progress-bar-fill {
     padding: var(--space-6);
   }
 }
+
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
@@ -1454,4 +1477,3 @@ html.dark .progress-bar-fill {
     height: 44px;
   }
 }
-
