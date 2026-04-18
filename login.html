@@ -12,29 +12,30 @@
 <body>
 
   <main class="auth-page">
+    <!-- Toggles positioned top-right -->
+    <div class="auth-toggles">
+      <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle Navigation Direction" title="Toggle RTL">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-right">
+          <path d="M8 3 4 7l4 4" />
+          <path d="M4 7h16" />
+          <path d="m16 21 4-4-4-4" />
+          <path d="M20 17H4" />
+        </svg>
+      </button>
+      <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-moon">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      </button>
+    </div>
+
     <div class="auth-card fade-in">
 
-      <!-- Toggles positioned top-right -->
-      <div class="auth-toggles">
-        <button type="button" class="tool-btn rtl-toggle-btn" aria-label="Toggle Navigation Direction"
-          title="Toggle RTL">
-          <svg xmlns="http://www.w3.org/-2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-arrow-left-right">
-            <path d="M8 3 4 7l4 4" />
-            <path d="M4 7h16" />
-            <path d="m16 21 4-4-4-4" />
-            <path d="M20 17H4" />
-          </svg>
-        </button>
-        <button type="button" class="tool-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-moon">
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-          </svg>
-        </button>
-      </div>
+
 
       <div class="auth-header" style="padding-top: var(--space-4);">
         <a href="index.html" class="auth-logo">
@@ -101,16 +102,18 @@
           <span>Continue with Google</span>
         </button>
 
-        <!-- Email -->
+        <!-- Apple -->
         <button type="button" class="btn btn-secondary btn-block"
-          style="border-color: var(--theme-border); justify-content: center;">
-          <svg style="margin-right: 8px; flex-shrink: 0;" width="18" height="18" viewBox="0 0 24 24"
+          style="border-color: var(--theme-border); justify-content: center; background: var(--theme-bg);">
+          <svg style="margin-right: 8px; flex-shrink: 0;" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
             xmlns="http://www.w3.org/2000/svg">
-            <path fill="#8B6914"
-              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+            <path
+              d="M16.946 12.353c-.024-3.084 2.518-4.57 2.632-4.641-1.428-2.091-3.64-2.39-4.425-2.42-1.884-.191-3.68 1.11-4.636 1.11-.955 0-2.443-1.09-3.98-1.059-2.016.035-3.87 1.171-4.908 2.973-2.097 3.639-.537 9.022 1.503 11.979 1.002 1.442 2.181 3.037 3.738 2.986 1.505-.052 2.072-.962 3.882-.962 1.808 0 2.327.962 3.896.93 1.62-.033 2.633-1.458 3.618-2.906 1.144-1.674 1.616-3.298 1.636-3.385-.035-.015-3.175-1.218-3.194-4.832v.227zm-2.903-5.267c.801-.97 1.341-2.321 1.194-3.674-1.157.047-2.585.772-3.41 1.733-.658.758-1.306 2.146-1.134 3.475 1.293.1 2.617-.611 3.35-1.534z" />
           </svg>
-          <span>Continue with Email</span>
+          <span>Continue with Apple</span>
         </button>
+
+
 
       </div>
 
